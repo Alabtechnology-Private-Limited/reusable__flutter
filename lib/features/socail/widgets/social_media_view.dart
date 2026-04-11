@@ -12,7 +12,7 @@ class SocialMediaView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
       child: Column(
-        mainAxisSize: .min,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Follow Us',
@@ -27,14 +27,14 @@ class SocialMediaView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: _socials.map((s) {
               return Padding(
-                padding: const .symmetric(horizontal: 12),
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 12),
                 child: GestureDetector(
                   onTap: () => _open(s.url),
                   child: Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          shape: .circle,
+                          shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
                               color: s.color.withValues(alpha: 0.3),
