@@ -11,7 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(body: Center(child: SocialMediaView())),
+      theme: ThemeData(textTheme: AppTextTheme.textTheme()),
+      home: Scaffold(
+        body: Center(child: SocialMediaView()),
+        bottomNavigationBar: Container(
+          color: Colors.black,
+          child: Row(
+            mainAxisAlignment: .center,
+            children: [AppVersionInfo(version: "1.0.4+2", isProduction: true)],
+          ),
+        ),
+      ),
     );
   }
 }
