@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract final class AppTextTheme {
   static TextTheme textTheme(
       [Color primaryText = const Color(0xFF1A1A1A),
-      Color secondaryText = const Color(0xFF6B6B6B)]) {
+      Color secondaryText = const Color(0xFF6B6B6B),]) {
     return TextTheme(
       displayLarge: TextStyle(
         fontSize: AppFontSize.xxl,
