@@ -11,6 +11,20 @@ part 'handler_extension.dart';
 ///
 /// Every failure type extends this class and provides a
 /// human-readable message describing the error.
+/// 
+///  TYPES OF FAILURES
+/// 
+///  [ValidationFailure]
+///  [RateLimitFailure]
+///  [NotFoundFailure]
+///  [UnauthorizedFailure]
+///  [ForbiddenFailure]
+///  [ServerFailure]
+///  [TimeoutFailure]
+///  [NetworkFailure]
+///  [CancelFailure]
+///  [UnknownFailure]
+/// 
 sealed class FailureHandler {
   const FailureHandler({required this.message});
 
@@ -28,6 +42,7 @@ sealed class FailureHandler {
 /// - Empty required field
 /// - Invalid email address
 /// - Invalid phone number
+/// 
 final class ValidationFailure extends FailureHandler {
   const ValidationFailure({required super.message});
 }
@@ -140,6 +155,10 @@ final class UnknownFailure extends FailureHandler {
 ///
 /// Contains the data returned from a successful
 /// business or network operation.
+/// 
+///  TYPES OF SUCCESS
+/// 
+///  [SuccessData<T>]
 sealed class SuccessHandler<T> {
   const SuccessHandler({required this.data});
 
