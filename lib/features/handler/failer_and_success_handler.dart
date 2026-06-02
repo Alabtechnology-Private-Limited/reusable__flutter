@@ -5,6 +5,7 @@ import 'package:alabtechnology/features/loges/loges.dart';
 part 'dio_exception.dart';
 part 'curd_repo.dart';
 part 'token_manager.dart';
+part 'handler_extension.dart';
 
 /// Base class for all application failures.
 ///
