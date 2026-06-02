@@ -3,6 +3,9 @@ description: "A reusable Flutter plugin providing widgets and utility functions.
 version: 0.0.1
 homepage:
 
+executables:
+  alabtechnology:
+
 environment:
   sdk: ">=3.3.0 <4.0.0"
   flutter: ">=3.10.0"
