@@ -8,6 +8,7 @@ environment:
   flutter: ">=3.10.0"
 
 dependencies:
+  dio: ^5.9.2
   flutter:
     sdk: flutter
   url_launcher: ^6.3.2
