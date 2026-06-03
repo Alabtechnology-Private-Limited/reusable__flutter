@@ -21,7 +21,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  alabtechnology: ^latest_version
+  alabtechnology: https://github.com/Alabtechnology-Private-Limited/reusable__flutter.git
 ```
 ### Then run: 
 flutter pub get
