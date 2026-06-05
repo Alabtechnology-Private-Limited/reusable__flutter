@@ -8,7 +8,7 @@ class SocialItemEntities {
     this.icon,
     this.imagePath,
   });
-  
+
   final String label;
   final Color color;
   final String url;
