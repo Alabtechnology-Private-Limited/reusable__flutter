@@ -67,79 +67,78 @@ extension DioExceptionExtenstion on DioException {
             DioExceptionType.sendTimeout ||
             DioExceptionType.receiveTimeout:
         return const TimeoutFailure(
-          message: 'The request took too long to complete. Please try again.',
+          message: ErrorMessage.longTime,
         );
 
       case DioExceptionType.cancel:
         return const CancelFailure(
-          message: 'The request was cancelled.',
+          message: ErrorMessage.requestCancel,
         );
 
       case DioExceptionType.connectionError:
         return const NetworkFailure(
-          message:
-              'Unable to connect to the internet. Please check your network connection.',
+          message: ErrorMessage.noInternet,
         );
 
       case DioExceptionType.badResponse:
         switch (response?.statusCode) {
           case 400:
             return ValidationFailure(
-              message: _serverMessage ?? 'The request could not be processed.',
+              message: _serverMessage ?? ErrorMessage.userNotFound,
             );
 
           case 401:
             return UnauthorizedFailure(
-              message: _serverMessage ??
-                  'Your session has expired. Please sign in again.',
+              message: _serverMessage ?? ErrorMessage.unatorized,
             );
 
           case 403:
             return ForbiddenFailure(
-              message: _serverMessage ??
-                  'You do not have permission to perform this action.',
+              message: _serverMessage ?? ErrorMessage.forbidden,
             );
 
           case 404:
             return NotFoundFailure(
-              message: _serverMessage ??
-                  'The requested resource could not be found.',
+              message: _serverMessage ?? ErrorMessage.noFound,
+            );
+
+          case 409:
+            return ValidationFailure(
+              message: _serverMessage ?? ErrorMessage.validation409,
             );
 
           case 422:
             return ValidationFailure(
-              message: _serverMessage ?? 'The submitted data is invalid.',
+              message: _serverMessage ?? ErrorMessage.validation422,
             );
 
           case 429:
             return RateLimitFailure(
-              message: _serverMessage ??
-                  'Too many requests. Please try again later.',
+              message: _serverMessage ?? ErrorMessage.tooManyrequest,
             );
 
           case 500:
           case 502:
           case 503:
+          case 504:
             return ServerFailure(
-              message: _serverMessage ??
-                  'The server is currently unavailable. Please try again later.',
+              message: _serverMessage ?? ErrorMessage.server500to504,
             );
 
           default:
-            return ServerFailure(
-              message:
-                  'An unexpected server error occurred (${response?.statusCode}).',
+            return const ServerFailure(
+              message: ErrorMessage.somethingUnexcepted,
             );
         }
 
       case DioExceptionType.unknown:
-        return UnknownFailure(
-          message: message ?? 'An unexpected error occurred. Please try again.',
+        return const UnknownFailure(
+          message: ErrorMessage.defaultError,
         );
 
       default:
         return const UnknownFailure(
-          message: 'Something went wrong. Please try again.',
+          message: ErrorMessage.unknownError,
         );
     }
   }
