@@ -182,10 +182,7 @@ final class TokenManager {
       _isRefreshApiOnWork = null;
     } else {
       _addToQueue(err.requestOptions, handler);
-      final isCompleted = await _isRefreshApiOnWork?.future;
-      if (!(isCompleted ?? false)) {
-        handler.next(err);
-      }
+      await _isRefreshApiOnWork?.future;
     }
   }
 
