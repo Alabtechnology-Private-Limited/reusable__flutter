@@ -324,6 +324,7 @@ class _CustomAlabTextFormField extends FormField<String> {
   }) : super(
          initialValue: textEditingController.text,
          builder: (state) {
+           print(state.errorText);
            return SizedBox(
              height: state.hasError ? 70 : 56,
              child: Stack(
@@ -334,7 +335,8 @@ class _CustomAlabTextFormField extends FormField<String> {
                      left: 0,
                      right: 0,
                      child: Container(
-                       padding: const EdgeInsets.fromLTRB(18, 28, 18, 2),
+                       constraints: BoxConstraints(maxHeight: 50),
+                       padding: const EdgeInsets.fromLTRB(12, 28, 18, 2),
                        decoration: BoxDecoration(
                          color: const Color.fromARGB(255, 255, 214, 211),
                          borderRadius: BorderRadius.vertical(
@@ -348,9 +350,12 @@ class _CustomAlabTextFormField extends FormField<String> {
                            fontWeight: FontWeight.w600,
                            color: Colors.red,
                          ),
+                         maxLines: 1,
+                         overflow: TextOverflow.ellipsis,
                        ),
                      ),
                    ),
+
                  TextField(
                    mouseCursor: mouseCursor,
                    scrollController: scrollController,
@@ -419,6 +424,7 @@ class _CustomAlabTextFormField extends FormField<String> {
                      }
                    },
                  ),
+              
                ],
              ),
            );
